@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    block stylesheets
+      link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(ng-app="realChat", ng-cloak)
+      block content
+
+    block javascript
+      script(src="/angular/angular.min.js")
+      script(src="/javascripts/main.js")

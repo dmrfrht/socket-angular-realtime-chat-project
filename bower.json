@@ -1,0 +1,13 @@
+{
+  "name": "socket-angular-realtime-chat-project",
+  "description": "",
+  "main": "",
+  "authors": [
+    "dmrfrht <dmrfrht1@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dmrfrht/socket-angular-realtime-chat-project",
+  "dependencies": {
+    "angular": "^1.8.2"
+  }
+}
