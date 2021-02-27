@@ -2,11 +2,11 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const session = require('express-session')
 const passport = require('passport')
 const logger = require('morgan');
 
 const redis = require('redis')
+const session = require('express-session')
 let RedisStore = require('connect-redis')(session)
 let redisClient = redis.createClient()
 
