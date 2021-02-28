@@ -8,11 +8,12 @@ function Rooms() {
 module.exports = new Rooms()
 
 Rooms.prototype.upsert = function (name) {
+  const roomId = shortid.generate()
   this.client.hset(
     'rooms',
-    '@Room:' + shortid.generate(),
+    '@Room:' + roomId,
     JSON.stringify({
-      id: '@Room:' + shortid.generate(),
+      id: '@Room:' + roomId,
       name,
       when: Date.now()
     }),

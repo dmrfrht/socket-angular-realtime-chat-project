@@ -9,6 +9,7 @@ const socketApi = {
 // libs
 const Users = require('./lib/Users')
 const Rooms = require('./lib/Rooms')
+const Messages = require('./lib/Messages')
 
 // socketAuthorization middleware
 io.use(socketAuthorization)
@@ -49,6 +50,14 @@ io.on('connection', socket => {
 
   Rooms.list(rooms => {
     io.emit('roomList', rooms)
+  })
+
+  socket.on('newMessage', data => {
+    Messages.upsert({
+      ...data,
+      userName: socket.request.user.name,
+      userSurName: socket.request.user.surname
+    })
   })
 })
 

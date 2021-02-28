@@ -345,6 +345,10 @@ ul, li {
   background-position: center;
 }
 
+.send:hover {
+  cursor: pointer;
+}
+
 .container .right .write .write-link.send:before {
   display: inline-block;
   float: left;
