@@ -1,7 +1,7 @@
-const redis = require('redis')
+const rediClient = require('../redisClient')
 
 function Users() {
-  this.client = redis.createClient()
+  this.client = rediClient.getClient()
 }
 
 module.exports = new Users()

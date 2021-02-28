@@ -27,6 +27,7 @@ io.on('connection', socket => {
   Users.upsert(socket.id, socket.request.user)
 
   Users.list(users => {
+    console.log(users)
     io.emit('onlineList', users)
   })
 
