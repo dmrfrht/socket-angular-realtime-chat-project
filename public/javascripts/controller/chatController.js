@@ -51,13 +51,18 @@ app.controller('chatController', ['$scope', 'chatFactory', 'userFactory', ($scop
     $scope.roomId = room.id
     $scope.chatName = room.name
     $scope.chatClicked = true
-    $scope.loadingMessages = true
 
-    chatFactory.getMessages(room.id)
-      .then(data => {
-        $scope.messages[room.id] = data
-        $scope.loadingMessages = false
-      })
+    if (!$scope.messages.hasOwnProperty(room.id)) {
+      $scope.loadingMessages = true
+
+      chatFactory.getMessages(room.id)
+        .then(data => {
+          $scope.messages[room.id] = data
+          $scope.loadingMessages = false
+        })
+    } else {
+
+    }
   }
 
   $scope.newMessage = () => {
