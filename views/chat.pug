@@ -41,7 +41,7 @@ block content
               ng-repeat="data in messages[roomId]",
               ng-class="{false: 'you', true: 'me'}[data.userId == user._id]"
               )
-              span {{ data.userName }} {{ data.userSurName }}
+              span {{ data.username }} {{ data.surname }}
               | {{ data.message }}
 
           .write

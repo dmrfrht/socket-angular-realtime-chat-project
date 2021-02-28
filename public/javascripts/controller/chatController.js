@@ -35,6 +35,17 @@ app.controller('chatController', ['$scope', 'chatFactory', 'userFactory', ($scop
     $scope.$apply()
   })
 
+  socket.on('receiveMessage', messageData => {
+    $scope.messages[messageData.roomId].push({
+      userId: messageData.userId,
+      username: messageData.username,
+      surname: messageData.surname,
+      message: messageData.message,
+    })
+
+    $scope.$apply()
+  })
+
   $scope.newRoom = () => {
     // let randomName = Math.random().toString(36).substr(7)
 
@@ -60,19 +71,26 @@ app.controller('chatController', ['$scope', 'chatFactory', 'userFactory', ($scop
           $scope.messages[room.id] = data
           $scope.loadingMessages = false
         })
-    } else {
-
     }
   }
 
   $scope.newMessage = () => {
 
-    socket.emit('newMessage', {
-      message: $scope.message,
-      roomId: $scope.roomId
-    })
+    if ($scope.message.trim() !== "") {
+      socket.emit('newMessage', {
+        message: $scope.message,
+        roomId: $scope.roomId
+      })
 
-    $scope.message = ""
+      $scope.messages[$scope.roomId].push({
+        userId: $scope.user._id,
+        username: $scope.user.name,
+        surname: $scope.user.surname,
+        message: $scope.message,
+      })
+
+      $scope.message = ""
+    }
   }
 
 
