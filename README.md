@@ -20,6 +20,3 @@ GOOGLE_LOGIN_CALLBACK_URL = XXX
 
 SESSION_SECRET_KEY = XXX
 ```
-
-## Run the app
-`npm run start:dev` // for locally
